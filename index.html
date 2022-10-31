@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qr Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js"></script>
+</head>
+<body>
+    <div>
+        <h1>Creat QR Code</h1>
+        <input type="text" placeholder="Write Your Text" autofocus>
+        <canvas id="qr"></canvas>
+    </div>
+
+    <script>
+        const input = document.querySelector("input");
+        const canvas = document.getElementById("qr");
+
+        const creatQR = v => {
+        return new QRious({
+            element: canvas,
+            value: v,
+            size: 400,
+            backgroundAlpha: 0,
+            foreground:"black"
+        });
+    };
+    const qr = creatQR(input.value);
+    input.addEventListener("input",() =>{
+        const qr = creatQR(input.value);
+    });
+    </script>
+</body>
+</html>
